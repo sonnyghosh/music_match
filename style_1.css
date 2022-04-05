@@ -1,0 +1,606 @@
+/* body for login page */
+body {
+  margin: 0;
+  position: absolute;
+  width: 100%;
+  background-color: #bcbcbc;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: arial;
+}
+
+/* style for body of every page when logged in */
+
+body.loggedin {
+  margin: 0;
+  position: absolute;
+  width: 100%;
+  background-color: black;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: arial;
+}
+
+/* style for login */
+
+.login {
+  width: 400px;
+  background-color: #ffffff;
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+  margin: 100px auto;
+}
+
+.login h1 {
+  text-align: center;
+  color: #5b6574;
+  font-size: 24px;
+  padding: 20px 0 20px 0;
+  border-bottom: 1px solid #dee0e4;
+}
+
+.login form {
+  	display: flex;
+  	flex-wrap: wrap;
+  	justify-content: center;
+  	padding-top: 20px;
+}
+
+.login form label {
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  	width: 50px;
+  	height: 50px;
+  	background-color: Crimson;
+  	color: #ffffff;
+}
+
+.login form input[type="password"], .login form input[type="text"] {
+  	width: 310px;
+  	height: 50px;
+  	border: 1px solid #dee0e4;
+  	margin-bottom: 20px;
+  	padding: 0 15px;
+}
+
+.btn-group button {
+  	display: inline-block;
+ 	margin-top: 20px;
+  	cursor: pointer;
+  	font-weight: bold;
+  	color: #ffffff;
+  	transition: background-color 0.2s;
+	float: left;
+	width: fit-content;
+}
+
+.login form input[type="submit"], #register {
+	background-color: Crimson;
+	color: #ffffff;
+	border: 1px solid red;
+	width: 197px;
+	padding: 15px;
+}
+
+.btn-group button:not(:last-child) {
+	border-right: none;
+}
+
+.btn-group:after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+.login form input[type="submit"]:hover, #register:hover {
+	background-color: #ec9b9b;
+  	transition: background-color 0.2s;
+}
+
+/* style for register page */
+.register {
+  	width: 400px;
+  	background-color: #ffffff;
+  	box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+  	margin: 100px auto;
+}
+.register h1 {
+  	text-align: center;
+  	color: #5b6574;
+  	font-size: 24px;
+  	padding: 20px 0 20px 0;
+  	border-bottom: 1px solid #dee0e4;
+}
+.register form {
+  	display: flex;
+  	flex-wrap: wrap;
+  	justify-content: center;
+  	padding-top: 20px;
+}
+.register form label {
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  	width: 50px;
+ 	height: 50px;
+  	background-color: Crimson;
+  	color: #ffffff;
+}
+.register form input[type="password"], .register form input[type="text"], .register form input[type="email"] {
+  	width: 310px;
+  	height: 50px;
+  	border: 1px solid #dee0e4;
+  	margin-bottom: 20px;
+  	padding: 0 15px;
+}
+.register form input[type="submit"] {
+  	width: 100%;
+  	padding: 15px;
+  	margin-top: 20px;
+  	background-color: Crimson;
+ 	border: 0;
+  	cursor: pointer;
+  	font-weight: bold;
+  	color: #ffffff;
+  	transition: background-color 0.2s;
+}
+.register form input[type="submit"]:hover {
+	background-color: #ec9b9b;
+  	transition: background-color 0.2s;
+}
+
+
+/* style for nav bar on every page */
+
+.nav-bar {
+  width: 100%;
+  overflow: hidden;
+  background: black;
+  position: fixed;
+  top: 0;
+  z-index: 300;
+
+}
+
+.nav-bar ul {
+  padding: 0;
+  margin: 0 0 0 250px;
+  list-style: none;
+}
+
+.nav-bar li {
+  float: left;
+}
+
+.nav-bar li a {
+  width: 150px;
+  display: block;
+  padding: 20px 15px;
+  text-decoration: none;
+  font-family: arial;
+  color: white;
+  text-align: center;
+
+}
+
+.nav-bar li a:hover {
+  background: crimson;
+  text-transform: uppercase;
+}
+
+.nav-bar .logo img {
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.nav-bar .searchbar input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  font-size: 17px;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right,
+  ul.topnav li {float: none;}
+}
+
+/* style for home page */
+
+.open-button-home {
+  background-color: crimson;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 30px;
+  left: 80px;
+  height: 150px;
+  border-radius: 25px;
+}
+
+.form-popup-home {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  z-index: 1;
+  overflow:auto;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+.form-container-home {
+  padding: 10px;
+  background-color: white;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.form-container-home input[type=text] {
+  width: 100%;
+  padding: 15px;
+  margin: 8px 0px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  background: #f1f1f1;
+}
+
+.form-container-home input[type=text]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.form-container-home .btn {
+  background-color: crimson;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+.form-container-home .cancel {
+  background-color: red;
+}
+
+.form-container-home .btn:hover, .open-button-home:hover {
+  opacity: 0.8;
+}
+
+.leftcolumn-home {
+  float: left;
+  width: 25%;
+}
+
+.rightcolumn-home {
+  float: left;
+  width: 75%;
+}
+
+.user-home {
+  background-color: LightSlateGrey;
+  padding: 20px;
+  margin-top: 100px;
+  border: 5px solid Crimson;
+  border-radius: 25px;
+}
+
+.user-home p {
+  color: black;
+  font-size: 16px;
+}
+
+.user-home ol {
+  color: black;
+  font-size: 16px;
+}
+
+.toprow-home {
+  background-color: LightSlateGrey;
+  padding: 20px;
+  margin-top: 100px;
+  border: 5px solid Crimson;
+  margin-left: 20px;
+  border-radius: 25px;
+}
+
+.bottomrow-home {
+  background-color: LightSlateGrey;
+  padding: 20px;
+  border: 5px solid Crimson;
+  margin-left: 20px;
+  border-radius: 25px;
+}
+
+.playlist-home {
+  background-color: black;
+  padding: 20px;
+  border: 3px solid DimGrey;
+  border-radius: 25px;
+}
+
+.playlist-home p {
+  color: white;
+  font-size: 18px;
+}
+
+.row-home:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* style for album covers for tables of playlists and auto-generated playlists (on home and playlist page) */
+
+.fakecover {
+  background-color: Crimson;
+  width: 5px;
+  height: 5px;
+  padding: 20px;
+  position: relative;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  float: left;
+
+}
+
+
+/* style for playlist page */
+
+.leftcolumn-playlist {
+  float: left;
+  width: 30%;
+}
+
+.rightcolumn-playlist {
+  float: left;
+  width: 70%;
+}
+
+.toprow-playlist {
+  background-color: LightSlateGrey;
+  padding: 20px;
+  margin-top: 100px;
+  border: 5px solid Crimson;
+  margin-left: 20px;
+  border-radius: 25px;
+}
+
+.bottomrow-playlist {
+  background-color: LightSlateGrey;
+  padding: 20px;
+  border: 5px solid Crimson;
+  margin-left: 20px;
+  border-radius: 25px;
+}
+
+.playlist-playlist {
+  background-color: black;
+  padding: 20px;
+  border: 3px solid DimGrey;
+  border-radius: 25px;
+}
+
+.playlist-playlist p {
+  color: white;
+  font-size: 18px;
+}
+
+.current-playlist {
+  background-color: LightSlateGrey;
+  padding: 20px;
+  margin-top: 100px;
+  border: 5px solid Crimson;
+  border-radius: 25px;
+  margin-left: 20px;
+  overflow-wrap: break-word;
+}
+
+.fakecovercurrent-playlist {
+  background-color: Crimson;
+  width: 100px;
+  height: 120px;
+  padding: 20px;
+  position: relative;
+  margin-right: 10px;
+  float: left;
+}
+
+.song-playlist {
+  background-color: black;
+  padding: 20px;
+  border: 3px solid DimGrey;
+  border-radius: 25px;
+  margin-left: 20px;
+  height: 50px;
+  display: flex
+  flex-wrap: wrap;
+}
+
+.song-playlist p {
+  color: white;
+  word-spacing: 150px;
+}
+
+.row-playlist:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* style for the user stats page */
+
+.userinfo-user {
+  margin-top: 60px;
+  width: 100%;
+  background-color: LightSlateGrey;
+  padding: 20px;
+  border: 5px solid Crimson;
+  border-radius: 25px;
+  margin-right: 0px;
+}
+
+.firstcolumn-user {
+  float:left;
+  width:33%;
+}
+
+.secondcolumn-user {
+  float: left;
+  width: 33%;
+}
+
+.thirdcolumn-user {
+  float: left;
+  width: 33%;
+}
+
+.topgenres-user {
+  width: 60%;
+  background-color: LightSlateGrey;
+  padding: 20px;
+  border: 5px solid Crimson;
+  border-radius: 25px;
+}
+
+.topartists-user {
+  width: 60%;
+  background-color: LightSlateGrey;
+  padding: 20px;
+  border: 5px solid Crimson;
+  border-radius: 25px;
+}
+
+.topsongs-user {
+  width: 60%;
+  background-color: LightSlateGrey;
+  padding: 20px;
+  border: 5px solid Crimson;
+  border-radius: 25px;
+}
+
+.row-user:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* style for profile page */
+
+.profileinfo-profile {
+  background-color: black;
+  padding: 20px;
+  border: 3px solid DimGrey;
+  opacity: 0.5;
+  border-radius: 25px;
+  margin-top: 60px;
+}
+
+.profileinfo-profile p{
+  color: white;
+  text-align: center;
+}
+
+.open-button-profile {
+  background-color: crimson;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  height: 100px;
+  width: 100%;
+  border-radius: 25px;
+}
+
+.form-popup-profile {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  z-index: 1;
+  overflow:auto;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+.form-container-profile {
+  padding: 10px;
+  background-color: white;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.form-container-profile input[type=text] {
+  width: 100%;
+  padding: 15px;
+  margin: 8px 0px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  background: #f1f1f1;
+}
+
+.form-container-profile input[type=text]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.form-container-profile .btn {
+  background-color: crimson;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+.form-container-profile .cancel {
+  background-color: Gray;
+}
+
+.form-container-profile .delete {
+  background-color: red;
+}
+
+.form-container-profile .btn:hover, .open-button:hover {
+  opacity: 0.8;
+}
+
+/* animation for buttons */
+
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
