@@ -118,8 +118,10 @@ if (!isset($_SESSION['loggedin'])) {
       <p> Created on "date"</p>
     </div>
 
-    <div id="song" class="song-playlist" style="color: white">
-  </div>
+    <div id="song" class="song-playlist" style="color: white"><p>song</p>
+    </div>
+
+	</div>
 
 	<div class="rightcolumn-playlist" id="playlist_match_name" style="visibility:hidden">
     <div class="current-playlist">
@@ -130,8 +132,9 @@ if (!isset($_SESSION['loggedin'])) {
       <p> Created on "date"</p>
     </div>
 
-    <div id="song" class="song-playlist" style="color: white">
-  </div>
+    <div id="song" class="song-playlist-match" style="color: white">
+			<p>song</p>
+    </div>
 
 </div>
 
@@ -145,15 +148,17 @@ function myFunction() {
   }
 }
 
-var x ="", i;
-for (i=1; i<=6; i++) {
-  x = x + "<<b> SongName</b> ArtistName AlbumName Length>";
+function multiplyNode(node, count, deep) {
+    for (var i = 0, copy; i < count - 1; i++) {
+        copy = node.cloneNode(deep);
+        node.parentNode.insertBefore(copy, node);
+    }
 }
-document.getElementById("song").innerHTML = x;
 
+multiplyNode(document.querySelector('.song-playlist'), 10, true);
 
+multiplyNode(document.querySelector('.song-playlist-match'), 10, true);
 
-multiplyNode(document.querySelector('.song'), 5, true);
 </script>
 
 </body>

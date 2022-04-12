@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-$client_id = '0170386a16fc48d78411d539b152fe6f';
-$client_secret = 'c3ef16cb7d744b0ea7d2a733f7dbc144';
+$client_id = 'd50b82c8aadf47f58e2827744cfff0fc';
+$client_secret = 'e137390a1ee64d098895f17fbbdb00cd';
 $redirect_uri = 'https://web.ics.purdue.edu/~g1120478/callback.php';
 
 
@@ -16,13 +16,12 @@ $options = [
     'state' => $state,
 ];
 
-echo "Hello";
 header('Location: https://accounts.spotify.com/en/authorize?' . getAuthorizeUrl($options));
 
 function getAuthorizeUrl($options = []) {
   $options = (array) $options;
   $parameters = [
-    'client_id' => '0170386a16fc48d78411d539b152fe6f',
+    'client_id' => 'd50b82c8aadf47f58e2827744cfff0fc',
     'redirect_uri' => 'https://web.ics.purdue.edu/~g1120478/callback.php',
     'response_type' => 'code',
     'scope' => 'playlist-read-private user-read-private',

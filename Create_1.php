@@ -165,7 +165,7 @@ if (!isset($_SESSION['loggedin'])) {
           <p>Value: <span id="demo-mood"></span></p>
         </div>
 
-        <button type="submit" class="btn">Sumbit</button>
+        <button type="submit" class="btn">Submit</button>
         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
 
 </form>

@@ -20,8 +20,10 @@ $data = ['grant_type'=>'authorization_code',
 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
 
 /* set the content type json */
+
+// NEED TO CHANGE  64 ENCODE based on client id: client secret
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Authorization: Basic MDE3MDM4NmExNmZjNDhkNzg0MTFkNTM5YjE1MmZlNmY6YzNlZjE2Y2I3ZDc0NGIwZWE3ZDJhNzMzZjdkYmMxNDQ=',
+            'Authorization: Basic ZDUwYjgyYzhhYWRmNDdmNThlMjgyNzc0NGNmZmYwZmM6ZTEzNzM5MGExZWU2NGQwOTg4OTVmMTdmYmJkYjAwY2Q=',
             'Content-Type: application/x-www-form-urlencoded'
         ));
 
@@ -30,7 +32,14 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, 1);
 /* execute request */
 $result = json_decode(curl_exec($ch));
-echo $result->access_token;
+
+$_SESSION['access'] = $result->access_token;
+$_SESSION['refresh'] = $result->refresh_token;
+
+//Maybe add some error checking here to make sure that the access token and refresh token were actually received.
+
+header('Location: addAuthSQL.php');
+//echo $result;
 
 /* close cURL resource */
 curl_close($ch);

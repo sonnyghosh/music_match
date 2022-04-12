@@ -52,7 +52,17 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
 			$password = crypt($_POST['password'], $salt);
 			$stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
 			$stmt->execute();
-			header('Location: Home_1.php');
+
+			//Could change this here to create session variables as logged in being TRUE
+			// and then send to home screen. This send to home screen
+			// literally just sends it to home, and then redirects to login.
+
+// Code below could be uncommented if find a way to get the id from the accounts table
+			// session_regenerate_id();
+			// $_SESSION['loggedin'] = TRUE;
+			// $_SESSION['name'] = $_POST['username'];
+			// $_SESSION['id'] = $id;
+			header('Location: logout.php');
 		} else {
 			// Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
 			echo 'Could not prepare statement!';

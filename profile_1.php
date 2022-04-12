@@ -94,8 +94,9 @@ $stmt->close();
 
           <button type="submit" class="btn">Confirm Changes</button>
           <button type="button" class="btn cancel" onclick="closeFormEdit()">Close</button>
-         </form>
-       </div>
+
+      </form>
+</div>
 
 <button type="button" class="open-delete-profile" onclick="openFormDelete()">Delete Account</button>
 
@@ -107,7 +108,7 @@ $stmt->close();
 </div>
 	<div class="buttons">
 		<button type="button" class="cancelbtn" onclick="closeFormDelete()">Cancel</button>
-		<button type="button" class="deletebtn">Delete Account Date</button>
+		<button type="button" class="deletebtn">Delete Account Data</button>
  </div>
 </form>
 
