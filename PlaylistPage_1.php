@@ -31,23 +31,19 @@ if (!isset($_SESSION['loggedin'])) {
 
 <body class="loggedin">
 
-<div class="nav-bar">
-
-  <div class="logo">
-    <a href="Home_1.php"><img src="logo.png" width="50" height="50"></a>
-  </div>
-    <ul>
-      <li><a href="#"><i class="fa-solid fa-compass"></i> Explore</a></li>
-      <li><a href="User_1.php"><i class="fa-solid fa-square-poll-vertical"></i> User Stats</a></li>
-      <li><a href="PlaylistPage_1.php"><i class="fa-solid fa-music"></i> Playlists</a></li>
-      <li><a href="profile_1.php"><i class="fa-solid fa-user"></i> Profile</a></li>
-      <li><a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
-      <li class="searchbar">
-         <input type="text" placeholder="Search..">
-      </li>
-    </ul>
-
-</div>
+	<nav class="nav-bar" id="navbar">
+	      <a href="Home_1.php"><img src="logo.png" width="50" height="50"></a>
+	      <a href="Create_1.php"><i class="fa-solid fa-compass"></i> Create</a>
+	      <a href="User_1.php"><i class="fa-solid fa-square-poll-vertical"></i> User Stats</a>
+	      <a href="PlaylistPage_1.php"><i class="fa-solid fa-music"></i> Playlists</a>
+	      <a href="profile_1.php"><i class="fa-solid fa-user"></i> Profile</a>
+	      <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+				<div class="searchbar">
+	      <input type="text" placeholder="Search...">
+			</div>
+				<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+					<i class="fa fa-bars"></i></a>
+	</nav>
 
 <div class="row-playlist">
 
@@ -56,27 +52,27 @@ if (!isset($_SESSION['loggedin'])) {
 
   <h1>Your Playlists</h1>
 
-      <div class="playlist-playlist">
+      <div class="playlist-playlist" onclick="document.getElementById('blank').innerHTML=document.getElementById('playlist_name').innerHTML" style="cursor: pointer;">
         <div class="fakecover"></div>
           <p><b> Playlist Name</b> by Artist Name</p>
       </div><br>
 
-      <div class="playlist-playlist">
+      <div class="playlist-playlist" onclick="document.getElementById('blank').innerHTML=document.getElementById('playlist_name').innerHTML" style="cursor: pointer;">
         <div class="fakecover"></div>
         <p><b>Playlist Name</b> by Artist Name</p>
       </div><br>
 
-      <div class="playlist-playlist">
+      <div class="playlist-playlist" onclick="document.getElementById('blank').innerHTML=document.getElementById('playlist_name').innerHTML" style="cursor: pointer;">
         <div class="fakecover"></div>
         <p><b>Playlist Name</b> by Artist Name</p>
       </div><br>
 
-      <div class="playlist-playlist">
+      <div class="playlist-playlist" onclick="document.getElementById('blank').innerHTML=document.getElementById('playlist_name').innerHTML" style="cursor: pointer;">
         <div class="fakecover"></div>
         <p><b>Playlist Name</b> by Artist Name</p>
       </div><br>
 
-      <div class="playlist-playlist">
+      <div class="playlist-playlist" onclick="document.getElementById('blank').innerHTML=document.getElementById('playlist_name').innerHTML" style="cursor: pointer;">
         <div class="fakecover"></div>
         <p><b>Playlist Name</b> by Artist Name</p>
       </div><br>
@@ -84,27 +80,27 @@ if (!isset($_SESSION['loggedin'])) {
 
    <div class="bottomrow-playlist">
    <h1>Auto-Generated Playlists</h1>
-     <div class="playlist-playlist">
+     <div class="playlist-playlist" onclick="document.getElementById('blank').innerHTML=document.getElementById('playlist_match_name').innerHTML" style="cursor: pointer;">
        <div class="fakecover"></div>
        <p><b>Playlist Name</b> by Music Match</p>
      </div><br>
 
-     <div class="playlist-playlist">
+     <div class="playlist-playlist" onclick="document.getElementById('blank').innerHTML=document.getElementById('playlist_match_name').innerHTML" style="cursor: pointer;">
        <div class="fakecover"></div>
        <p><b>Playlist Name</b> by Music Match</p>
      </div><br>
 
-     <div class="playlist-playlist">
+     <div class="playlist-playlist" onclick="document.getElementById('blank').innerHTML=document.getElementById('playlist_match_name').innerHTML" style="cursor: pointer;">
        <div class="fakecover"></div>
        <p><b>Playlist Name</b> by Music Match</p>
      </div><br>
 
-     <div class="playlist-playlist">
+     <div class="playlist-playlist" onclick="document.getElementById('blank').innerHTML=document.getElementById('playlist_match_name').innerHTML" style="cursor: pointer;">
        <div class="fakecover"></div>
        <p><b>Playlist Name</b> by Music Match</p>
      </div><br>
 
-     <div class="playlist-playlist">
+     <div class="playlist-playlist" onclick="document.getElementById('blank').innerHTML=document.getElementById('playlist_match_name').innerHTML" style="cursor: pointer;">
        <div class="fakecover"></div>
        <p><b>Playlist Name</b> by Music Match</p>
      </div><br>
@@ -112,59 +108,53 @@ if (!isset($_SESSION['loggedin'])) {
 
   </div>
 
-  <div class="rightcolumn-playlist">
+	<div class="column-blank" id="blank"></div>
+  <div class="rightcolumn-playlist" id="playlist_name" style="visibility:hidden">
     <div class="current-playlist">
       <div class="fakecovercurrent-playlist"></div>
       <p> Playlist</p>
       <h3> Playlist Name </h3>
-      <p> Artist Name/Music Match </p>
+      <p> Artist Name</p>
       <p> Created on "date"</p>
     </div>
 
-    <div class="song-playlist">
-      <div class="fakecover"></div>
-        <p><b> SongName</b> ArtistName AlbumName Length</p>
-       </div>
+    <div id="song" class="song-playlist" style="color: white">
+  </div>
 
-    <div class="song-playlist">
-      <div class="fakecover"></div>
-      <p><b> SongName</b> ArtistName AlbumName Length</p>
+	<div class="rightcolumn-playlist" id="playlist_match_name" style="visibility:hidden">
+    <div class="current-playlist">
+      <div class="fakecovercurrent-playlist"></div>
+      <p> Playlist</p>
+      <h3> Playlist Name </h3>
+      <p>by Music Match</p>
+      <p> Created on "date"</p>
     </div>
 
-    <div class="song-playlist">
-      <div class="fakecover"></div>
-      <p><b> SongName</b> ArtistName AlbumName Length</p>
-    </div>
-
-   <div class="song-playlist">
-      <div class="fakecover"></div>
-     <p><b> SongName</b> ArtistName AlbumName Length</p>
-    </div>
-
-    <div class="song-playlist">
-      <div class="fakecover"></div>
-      <p><b> SongName</b> ArtistName AlbumName Length</p>
-    </div>
-
-    <div class="song-playlist">
-      <div class="fakecover"></div>
-      <p><b> SongName</b> ArtistName AlbumName Length</p>
-    </div>
-
-    <div class="song-playlist">
-      <div class="fakecover"></div>
-      <p><b> SongName</b> ArtistName AlbumName Length</p>
-       </div>
-
-    <div class="song-playlist">
-      <div class="fakecover"></div>
-      <p><b> SongName</b> ArtistName AlbumName Length</p>
-    </div>
-
-
+    <div id="song" class="song-playlist" style="color: white">
   </div>
 
 </div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("navbar");
+  if (x.className === "nav-bar") {
+    x.className += " responsive";
+  } else {
+    x.className = "nav-bar";
+  }
+}
+
+var x ="", i;
+for (i=1; i<=6; i++) {
+  x = x + "<<b> SongName</b> ArtistName AlbumName Length>";
+}
+document.getElementById("song").innerHTML = x;
+
+
+
+multiplyNode(document.querySelector('.song'), 5, true);
+</script>
 
 </body>
 

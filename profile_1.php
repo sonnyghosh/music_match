@@ -47,49 +47,39 @@ $stmt->close();
 
 <body class="loggedin">
 
-<nav class="nav-bar">
-  <div class="logo">
-      <a href="Home_1.php"><img src="logo.png" width="50" height="50"></a>
-  </div>
-    <ul>
-      <li><a href="#"><i class="fa-solid fa-compass"></i> Explore</a></li>
-      <li><a href="User_1.php"><i class="fa-solid fa-square-poll-vertical"></i> User Stats</a></li>
-      <li><a href="PlaylistPage_1.php"><i class="fa-solid fa-music"></i> Playlists</a></li>
-      <li><a href="profile_1.php"><i class="fa-solid fa-user"></i> Profile</a></li>
-      <li><a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
-      <li class="searchbar">
-         <input type="text" placeholder="Search..">
-      </li>
-    </ul>
-  </div>
-</nav>
+	<nav class="nav-bar" id="navbar">
+	      <a href="Home_1.php"><img src="logo.png" width="50" height="50"></a>
+	      <a href="Create_1.php"><i class="fa-solid fa-compass"></i> Create</a>
+	      <a href="User_1.php"><i class="fa-solid fa-square-poll-vertical"></i> User Stats</a>
+	      <a href="PlaylistPage_1.php"><i class="fa-solid fa-music"></i> Playlists</a>
+	      <a href="profile_1.php"><i class="fa-solid fa-user"></i> Profile</a>
+	      <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+				<div class="searchbar">
+	      <input type="text" placeholder="Search...">
+			</div>
+				<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+					<i class="fa fa-bars"></i></a>
+	</nav>
 
 <div class="profileinfo-profile">
-  <p>Your account details are below:</p>
-  <table style="color: white">
-    <tr>
-      <td>Username:</td>
-      <td><?=$_SESSION['name']?></td>
-    </tr>
-    <tr>
-      <td>Password:</td>
-      <td><?=$password?></td>
-    </tr>
-    <tr>
-      <td>Email:</td>
-      <td><?=$email?></td>
-    </tr>
-  </table>
+  <p><b>Your account details are below:</b></p>
+  <ul style="color: white">
+      <li><b>Username:</b> <?=$_SESSION['name']?></li>
+      <li><b>Password:</b> <?=$password?></li>
+      <li><b>Email:</b> <?=$email?></li>
+  </ul>
 </div>
 
-<button class="open-button-profile" onclick="openForm()">Manage User Acount</button>
+<div class="btn-group-profile">
+
+<button class="open-button-profile" onclick="openFormEdit()">Manage User Acount</button>
 
 <div class="form-popup-profile" id="editinfo">
       <form action="/action_page.php" class="form-container-profile animate">
 
           <label for="username"><b>New Username</b></label>
           <input type="text" placeholder="Enter Username" name="username" optional>
- 
+
           <label for="email"><b>Change Email</b></label>
           <input type="text" placeholder="Enter Email" name="email" optional>
 
@@ -103,19 +93,55 @@ $stmt->close();
           <input type="text" placeholder="Re-Enter Password" name="confirmpswd" optional>
 
           <button type="submit" class="btn">Confirm Changes</button>
-          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-          <button type="button" class="btn delete">Delete Account Data</button>
+          <button type="button" class="btn cancel" onclick="closeFormEdit()">Close</button>
          </form>
        </div>
 
+<button type="button" class="open-delete-profile" onclick="openFormDelete()">Delete Account</button>
+
+<div class="form-popup-profile" id="deleteaccount">
+	<form action="/action_page.php" class="form-container-profile animate">
+	<div class="delete-content">
+	  <h1>Are you sure you want to delete your account?</h1>
+	  <p>Warning: All information will be lost and canot be retained. This includes all playlists created and user stats such as top artists, genres, and songs.</p>
+</div>
+	<div class="buttons">
+		<button type="button" class="cancelbtn" onclick="closeFormDelete()">Cancel</button>
+		<button type="button" class="deletebtn">Delete Account Date</button>
+ </div>
+</form>
+
+</div>
+
+
+
 <script>
-function openForm() {
+function myFunction() {
+  var x = document.getElementById("navbar");
+  if (x.className === "nav-bar") {
+    x.className += " responsive";
+  } else {
+    x.className = "nav-bar";
+  }
+}
+
+function openFormEdit() {
   document.getElementById("editinfo").style.display = "block";
 }
 
-function closeForm() {
+function closeFormEdit() {
   document.getElementById("editinfo").style.display = "none";
 }
+
+function openFormDelete() {
+  document.getElementById("deleteaccount").style.display = "block";
+}
+
+function closeFormDelete() {
+  document.getElementById("deleteaccount").style.display = "none";
+}
+
+
 </script>
 </body>
 

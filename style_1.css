@@ -162,69 +162,85 @@ body.loggedin {
 
 }
 
-.nav-bar ul {
-  padding: 0;
-  margin: 0 0 0 250px;
-  list-style: none;
-}
-
-.nav-bar li {
-  float: left;
-}
-
-.nav-bar li a {
-  width: 150px;
-  display: block;
+.nav-bar a {
+  float:left;
+  disply: block;
+  color: white;
+  text-align: center;
   padding: 20px 15px;
   text-decoration: none;
   font-family: arial;
-  color: white;
-  text-align: center;
-
+  margin-left: 100px;
 }
 
-.nav-bar li a:hover {
+.nav-bar a:first-child {
+  float: left;
+  margin-left:0;
+  padding: 20px 15px;
+}
+
+.nav-bar a:hover {
   background: crimson;
   text-transform: uppercase;
 }
 
-.nav-bar .logo img {
-  position: absolute;
-  margin-top: 5px;
-  margin-left: 10px;
+.nav-bar .icon {
+  display: none;
 }
 
 .nav-bar .searchbar input[type=text] {
   float: right;
-  padding: 6px;
+  padding: 10px 15px;
+  margin-left: 20px;
   border: none;
-  margin-top: 8px;
   font-size: 17px;
   margin-left: 10px;
+  margin-top: 5px;
 }
 
-@media screen and (max-width: 600px) {
-  ul.topnav li.right,
-  ul.topnav li {float: none;}
+@media screen and (max-width: 1500px) {
+  .nav-bar a:not(:first-child) {display: none;}
+  .nav-bar a.icon {
+    float: right;
+    display: block;
+  }
 }
 
-/* style for home page */
+@media screen and (max-width: 1500px) {
+  .nav-bar.responsive {position:relative}
+  .nav-bar.responsive.icon {
+    position: absolute;
+    right:0;
+    top:0;
+  }
+  .nav-bar.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
 
-.open-button-home {
-  background-color: crimson;
-  color: white;
-  padding: 16px 20px;
+/* style for create page */
+.btn-group-create button {
+  background-color: Crimson;
   border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  bottom: 30px;
-  left: 80px;
-  height: 150px;
   border-radius: 25px;
+  color: white; /* White text */
+  padding: 16px 20px;
+  cursor: pointer; /* Pointer/hand icon */
+  width: 100%;
+  display: block; /* Make the buttons appear below each other */
 }
 
-.form-popup-home {
+.btn-group-create button:first-child {
+  margin-top: 100px;
+}
+
+.btn-group-create button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+.form-popup-create {
   display: none;
   position: fixed;
   left: 0;
@@ -238,7 +254,7 @@ body.loggedin {
   padding-top: 60px;
 }
 
-.form-container-home {
+.form-container-create {
   padding: 10px;
   background-color: white;
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
@@ -246,7 +262,7 @@ body.loggedin {
   width: 80%;
 }
 
-.form-container-home input[type=text] {
+.form-container-create input[type=text] {
   width: 100%;
   padding: 15px;
   margin: 8px 0px;
@@ -256,12 +272,12 @@ body.loggedin {
   background: #f1f1f1;
 }
 
-.form-container-home input[type=text]:focus {
+.form-container-create input[type=text]:focus {
   background-color: #ddd;
   outline: none;
 }
 
-.form-container-home .btn {
+.form-container-create .btn {
   background-color: crimson;
   color: white;
   padding: 16px 20px;
@@ -272,13 +288,180 @@ body.loggedin {
   opacity: 0.8;
 }
 
-.form-container-home .cancel {
+.form-container-create .cancel, .form-container-genre .cancel {
   background-color: red;
 }
 
-.form-container-home .btn:hover, .open-button-home:hover {
+.form-container-create .btn:hover, .form-container-genre:hover {
   opacity: 0.8;
 }
+
+.form-container-create .dropbtn {
+  background-color: crimson;
+}
+
+.open-button-create:hover, .open-button-create:focus {
+  opacity:0.8;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  opacity: 0.8;
+}
+
+/* The search field */
+#myInput {
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+/* The search field when it gets focus/clicked on */
+#myInput:focus {outline: 3px solid #ddd;}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+.multiselect {
+  width: 500px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+
+.slidecontainer-mood {
+  width: 30%;
+  float: right;
+  margin-right: 50px;
+}
+
+.slidecontainer-length {
+  width: 100%;
+}
+
+
+.slidermood {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slidermood:hover {
+  opacity: 1;
+}
+
+.slidermood::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: Crimson;
+  cursor: pointer;
+}
+
+.slidermood::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: Crimson;
+  cursor: pointer;
+}
+
+.sliderlength {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.sliderlength:hover {
+  opacity: 1;
+}
+
+.sliderlength::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: Crimson;
+  cursor: pointer;
+}
+
+.sliderlength::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: Crimson;
+  cursor: pointer;
+}
+
+
+/* style for home page */
 
 .leftcolumn-home {
   float: left;
@@ -371,6 +554,11 @@ body.loggedin {
   width: 70%;
 }
 
+.column-blank {
+  float: right;
+  width: 70%;
+}
+
 .toprow-playlist {
   background-color: LightSlateGrey;
   padding: 20px;
@@ -445,58 +633,22 @@ body.loggedin {
 /* style for the user stats page */
 
 .userinfo-user {
-  margin-top: 60px;
-  width: 100%;
-  background-color: LightSlateGrey;
+  background-color: black;
   padding: 20px;
   border: 5px solid Crimson;
   border-radius: 25px;
-  margin-right: 0px;
+  color: white;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.firstcolumn-user {
-  float:left;
-  width:33%;
-}
-
-.secondcolumn-user {
-  float: left;
-  width: 33%;
-}
-
-.thirdcolumn-user {
-  float: left;
-  width: 33%;
-}
-
-.topgenres-user {
-  width: 60%;
+.column-user {
+  padding: 10px;
   background-color: LightSlateGrey;
-  padding: 20px;
-  border: 5px solid Crimson;
+  border: 3px solid Crimson;
+  color: black;
   border-radius: 25px;
-}
-
-.topartists-user {
-  width: 60%;
-  background-color: LightSlateGrey;
-  padding: 20px;
-  border: 5px solid Crimson;
-  border-radius: 25px;
-}
-
-.topsongs-user {
-  width: 60%;
-  background-color: LightSlateGrey;
-  padding: 20px;
-  border: 5px solid Crimson;
-  border-radius: 25px;
-}
-
-.row-user:after {
-  content: "";
-  display: table;
-  clear: both;
 }
 
 /* style for profile page */
@@ -504,28 +656,26 @@ body.loggedin {
 .profileinfo-profile {
   background-color: black;
   padding: 20px;
-  border: 3px solid DimGrey;
-  opacity: 0.5;
+  border: 3px solid Crimson;
   border-radius: 25px;
-  margin-top: 60px;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.profileinfo-profile p{
+.profileinfo-profile p {
   color: white;
   text-align: center;
 }
 
-.open-button-profile {
-  background-color: crimson;
+.profileinfo-profile ul {
+  list-style-type: none;
+  text-align: center;
+}
+
+.profileinfo-profile p li{
   color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  height: 100px;
-  width: 100%;
-  border-radius: 25px;
+  text-align: center;
 }
 
 .form-popup-profile {
@@ -580,13 +730,47 @@ body.loggedin {
   background-color: Gray;
 }
 
-.form-container-profile .delete {
-  background-color: red;
-}
-
 .form-container-profile .btn:hover, .open-button:hover {
   opacity: 0.8;
 }
+
+.form-container-profile .cancelbtn {
+  background-color: Gray;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+.form-container-profile .deletebtn {
+  background-color: red;
+}
+
+
+.delete-content {
+  text-align: center;
+}
+
+.btn-group-profile button {
+  background-color: Crimson;
+  border: none;
+  border-radius: 25px;
+  color: white; /* White text */
+  padding: 16px 20px;
+  cursor: pointer; /* Pointer/hand icon */
+  width: 100%;
+  display: block; /* Make the buttons appear below each other */
+}
+
+.btn-group-profile button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+
+
 
 /* animation for buttons */
 
