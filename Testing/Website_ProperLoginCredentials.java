@@ -11,7 +11,7 @@ public class Website_ProperLoginCredentials {
 		ChromeDriver driver = new ChromeDriver();
 		driver.get("https://web.ics.purdue.edu/~g1120478/");
 		
-		driver.findElement(By.id("username")).sendKeys("test1");
+		driver.findElement(By.id("username")).sendKeys("authDemonstration");
 		driver.findElement(By.id("password")).sendKeys("12345");
 		driver.findElement(By.xpath("//*[@id=\"submit\"]")).click();
 		String u = driver.getCurrentUrl();
