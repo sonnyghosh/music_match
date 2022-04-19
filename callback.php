@@ -5,6 +5,10 @@ session_start();
 // $client_secret = 'c3ef16cb7d744b0ea7d2a733f7dbc144';
 // $redirect_uri = 'https://web.ics.purdue.edu/~g1120478/callback.php';
 $authorization_code = $_GET['code'];
+if (empty($authorization_code)) {
+  header('Location: index.html');
+  exit;
+}
 
 $url = 'https://accounts.spotify.com/api/token';
 

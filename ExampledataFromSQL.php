@@ -14,7 +14,7 @@ if ( mysqli_connect_errno() ) {
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 //Build and execute query
-$query = 'SELECT id FROM accounts';
+$query = 'SELECT id, username FROM Accounts WHERE auth = 1';
 $result = mysqli_query($con, $query);
 
 $i = 0;
@@ -26,7 +26,7 @@ while ($result->data_seek($i)) {
 }
 $i = 0;
 while ($i < count($id_list)) {
-	printf("Id: %u \n", $id_list[$i][0]);
+	printf("Id: %u %s \n", $id_list[$i][0],$id_list[$i][1]);
 	$i++;
 }
 $result -> close();

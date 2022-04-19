@@ -1,11 +1,10 @@
 <?php
 // We need to use sessions, so you should always start sessions using the below code.
 session_start();
-// If the user is not logged in redirect to the login page...
-// if (!isset($_SESSION['loggedin'])) {
-// 	header('Location: index.html');
-// 	exit;
-// }
+if (empty($_SESSION['access'])) {
+  header('Location: index.html');
+  exit;
+}
 
 $DATABASE_HOST = 'mydb.itap.purdue.edu';
 $DATABASE_USER = 'g1120478';
@@ -27,7 +26,7 @@ if ($stmt = $con->prepare('INSERT INTO Tokens (user_id, access, refresh) VALUES 
 	$stmt->close();
 }
 
-if ($stmt = $con->prepare('UPDATE accounts SET auth = ? WHERE id = ?')) {
+if ($stmt = $con->prepare('UPDATE Accounts SET auth = ? WHERE id = ?')) {
 	$authorization = 1;
 	$id = $_SESSION['id'];
   $stmt->bind_param('ii', $authorization, $id);
@@ -38,5 +37,5 @@ if ($stmt = $con->prepare('UPDATE accounts SET auth = ? WHERE id = ?')) {
 $con->close();
 
 $_SESSION['loggedin'] = TRUE;
-header('Location: Home_1.php')
+header('Location: Home.php')
 ?>
