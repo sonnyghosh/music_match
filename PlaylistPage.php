@@ -16,6 +16,7 @@ if (!isset($_SESSION['loggedin'])) {
 
 <!-- title to show on page -->
 <title>Music Match | My Playlists</title>
+<link rel="icon" href="logo.png">
 
 <!-- formatting for every device -->
 <meta charset="utf-8"
@@ -147,13 +148,13 @@ function multiplyNode(node, count, deep) {
 }
 
 //repeat songs for current your playlist
-multiplyNode(document.querySelector('.song-playlist'), 10, true);
+multiplyNode(document.querySelector('.song-playlist'), 20, true);
 
 //repeat songs for current generated playlist
-multiplyNode(document.querySelector('.song-playlist-match'), 10, true);
+multiplyNode(document.querySelector('.song-playlist-match'), 20, true);
 
 //repeat playlists on left side (your playlists)
-multiplyNode(document.querySelector('.playlist-playlist'), 5, true);
+multiplyNode(document.querySelector('.playlist-playlist'), 10, true);
 
 //repeat playlists on left side (generated playlists)
 multiplyNode(document.querySelector('.autoplaylist-playlist'), 5, true);

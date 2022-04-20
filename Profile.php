@@ -23,6 +23,7 @@ $stmt->execute();
 $stmt->bind_result($password, $email);
 $stmt->fetch();
 $stmt->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +33,7 @@ $stmt->close();
 
 <!-- title to show on tabs -->
 <title>Music Match | Profile</title>
+<link rel="icon" href="logo.png">
 
 <!-- formatting for every device -->
 <meta charset="utf-8"
@@ -67,28 +69,24 @@ $stmt->close();
   <p><b>Your account details are below:</b></p>
   <ul style="color: white">
       <li><b>Username:</b> <?=$_SESSION['name']?></li>
-      <li><b>Password:</b> <?=$password?></li>
       <li><b>Email:</b> <?=$email?></li>
   </ul>
 </div>
 
 <!-- form to manage account !-->
-      <form action="/action_page.php" class="form-container-profile">
+      <form action="" method="post" class="form-container-profile">
 
-          <label for="username" style="color: white"><b>New Username</b></label>
-          <input type="text" placeholder="Enter Username" name="username" optional>
+          <label for="oldpswd" style="color: white"><b>Current Password</b></label><br />
+          <input type="password" placeholder="Enter Current Password" name="currentPassword" style="width: 100%; height: 30px;"><br />
+          <br />
 
-          <label for="email" style="color: white"><b>Change Email</b></label>
-          <input type="text" placeholder="Enter Email" name="email" optional>
+          <label for="newpswd" style="color: white"><b>New Password</b></label><br />
+          <input type="password" placeholder="Enter New Password" name="newPassword" style="width: 100%;height: 30px;"><br />
+          <br />
 
-          <label for="oldpswd" style="color: white"><b>Old Password</b></label>
-          <input type="text" placeholder="Enter Old Password" name="oldpswd" optional>
-
-          <label for="newpswd" style="color: white"><b>New Password</b></label>
-          <input type="text" placeholder="Enter New Password" name="newpswd" optional>
-
-          <label for="confirmpswd" style="color: white"><b>Confirm Password</b></label>
-          <input type="text" placeholder="Re-Enter Password" name="confirmpswd" optional>
+          <label for="confirmpswd" style="color: white"><b>Confirm New Password</b></label><br />
+          <input type="password" placeholder="Re-Enter New Password" name="confirmPassword" style="width: 100%;height: 30px;"><br />
+					<br />
 
           <button type="submit" class="btn">Confirm Changes</button>
 

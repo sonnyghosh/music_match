@@ -15,6 +15,7 @@ if (!isset($_SESSION['loggedin'])) {
 
 <!-- title to show on tabs -->
 <title>Music Match</title>
+<link rel="icon" href="logo.png">
 
 <!-- formatting for every device -->
 <meta charset="utf-8"

@@ -15,6 +15,7 @@ if (!isset($_SESSION['loggedin'])) {
 
 <!-- title to show on tabs -->
 <title>Music Match | User Stats</title>
+<link rel="icon" href="logo.png">
 
 <!-- formatting for every device -->
 <meta charset="utf-8"
@@ -63,7 +64,6 @@ if (!isset($_SESSION['loggedin'])) {
       <li>Genre 3</li>
       <li>Genre 4</li>
       <li>Genre 5</li>
-      <li>Genre 6</li>
     </ol>
 </div>
 
@@ -75,7 +75,6 @@ if (!isset($_SESSION['loggedin'])) {
       <li>Artist 3</li>
       <li>Artist 4</li>
       <li>Artist 5</li>
-      <li>Artist 6</li>
     </ol>
 </div>
 
@@ -87,7 +86,6 @@ if (!isset($_SESSION['loggedin'])) {
       <li>Song 3</li>
       <li>Song 4</li>
       <li>Song 5</li>
-      <li>Song 6</li>
 </div>
 
 </div>
