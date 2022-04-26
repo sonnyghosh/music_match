@@ -1,11 +1,37 @@
 <?php
-// We need to use sessions, so you should always start sessions using the below code.
+// Start/resume the session
 session_start();
-// If the user is not logged in redirect to the login page...
+
+// If the user is not logged in, send them to the login page
 if (!isset($_SESSION['loggedin'])) {
 	header('Location: index.html');
 	exit;
 }
+
+$DATABASE_HOST = 'mydb.itap.purdue.edu';
+$DATABASE_USER = 'g1120478';
+$DATABASE_PASS = 'Bean123.';
+$DATABASE_NAME = 'g1120478';
+// Try and connect using the info above.
+$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+if (mysqli_connect_errno()) {
+	// If there is an error with the connection, stop the script and display the error.
+	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
+}
+
+$sql = $con->query('SELECT * FROM test_playlists');
+
+$playlists = array();
+
+while ($row = fetch_assoc($sql){
+        $playlists[] = $row["playlist_name"];
+    }
+
+
+// Current test array
+//$test = array ("Sonny", "Aras", "JP" ,"Dane", "Bridget");
+
+
 ?>
 
 <!DOCTYPE html>
@@ -58,17 +84,22 @@ if (!isset($_SESSION['loggedin'])) {
 	         <h1>Your Playlists</h1>
            <div class="playlist-playlist" onclick="document.getElementById('blank').innerHTML=document.getElementById('playlist_name').innerHTML" style="cursor: pointer;">
                 <div class="fakecover"></div>
-                <p><b> Playlist Name</b> by Artist Name</p>
+                <p><b> <?=$playlist_name?></b> by Artist Name</p>
            </div>
      </div>
 
 <!-- user generated playlists !-->
      <div class="bottomrow-playlist">
           <h1>Auto-Generated Playlists</h1>
-          <div class="autoplaylist-playlist" onclick="document.getElementById('blank').innerHTML=document.getElementById('playlist_match_name').innerHTML" style="cursor: pointer;">
-               <div class="fakecover"></div>
-               <p><b>Playlist Name</b> by Music Match</p>
-         </div>
+					<?php
+					foreach($playlists as $value) {
+						echo '
+							<div class="autoplaylist-playlist" onclick="document.getElementById(\'blank\').innerHTML=document.getElementById(\''.$value.'\').innerHTML" style="cursor: pointer;">
+	            <div class="fakecover"></div>
+	            <p><b>'.$value.'</b> by Music Match</p></div>
+							';
+					}
+					?>
 
     </div>
 
@@ -80,8 +111,7 @@ if (!isset($_SESSION['loggedin'])) {
   <div class="rightcolumn-playlist" id="playlist_name" style="visibility:hidden">
 <!-- current playlist clicked on (from your playlists)!-->
        <div class="current-playlist">
-            <div class="fakecovercurrent-playlist" style="float: left; display: flex;"></div>
-						<button type="button" class="history" style="float: right; display: flex; background-color: Crimson; vertical-align: middle; height: 30px;"><b>Generate New Playlist</b></button>
+            <div class="fakecovercurrent-playlist"></div>
             <p> Playlist</p>
             <h3> Playlist Name </h3>
             <p> Artist Name</p>
@@ -92,39 +122,49 @@ if (!isset($_SESSION['loggedin'])) {
       <div class="song-playlist" style="color: white">
 				   <div class="fakecover-song"></div>
 			   	 <div class="songlength">
-						    <p>time</p>
+						    <p><?=$runtime?></p>
 				   </div>
 				   <div class="songinfo">
-						    <p style="margin-bottom: 0"><b>Song Name</b></p>
-						    <p style="margin-top: 0">Artist Name</p>
+						    <p style="margin-bottom: 0"><b><?=$song_name?></b></p>
+						    <p style="margin-top: 0"><?=$artist_name?></p>
 				   </div>
 			</div>
 
 	</div>
 
-	<div class="rightcolumn-playlist" id="playlist_match_name" style="visibility:hidden">
-	<!-- current playlist clicked on (from generated playlists) !-->
-       <div class="current-playlist">
-            <div class="fakecovercurrent-playlist"></div>
-            <p> Playlist</p>
-            <h3> Playlist Name </h3>
-            <p>by Music Match</p>
-            <p> Created on "date"</p>
-       </div>
+	<?php
+	foreach($playlists as $value) {
+		echo '
+		<div class="rightcolumn-playlist" id="'.$value.'" style="visibility:hidden">
+		<!-- current playlist clicked on (from generated playlists) !-->
+		     <div class="current-playlist">
+		          <div class="fakecovercurrent-playlist"></div>
+		          <p> Playlist</p>
+		          <h3>'.$value.'</h3>
+		          <p>by Music Match</p>
+		          <p> Created on "date"</p>
+		     </div>
 
-<!-- songs inlcluded on playlist (from generated playlists)!-->
-       <div class="song-playlist-match" style="color: white">
-				    <div class="fakecover-song"></div>
-						<div class="songlength">
-							   <p>time</p>
-						</div>
-						<div class="songinfo">
-			           <p style="margin-bottom: 0"><b>Song Name</b></p>
-						     <p style="margin-top: 0">Artist Name</p>
-						</div>
-       </div>
+		<!-- songs inlcluded on playlist (from generated playlists)!-->
+		     <div class="song-playlist-match" style="color: white">
+					    <div class="fakecover-song"></div>
+							<div class="songlength">
+								   <p>time</p>
+							</div>
+							<div class="songinfo">
+				           <p style="margin-bottom: 0"><b>Song Name</b></p>
+							     <p style="margin-top: 0">Artist Name</p>
+							</div>
+		     </div>
 
-  </div>
+
+		</div>
+		';
+	}
+	?>
+
+
+
 </div>
 
 <script>
@@ -157,7 +197,7 @@ multiplyNode(document.querySelector('.song-playlist-match'), 20, true);
 multiplyNode(document.querySelector('.playlist-playlist'), 10, true);
 
 //repeat playlists on left side (generated playlists)
-multiplyNode(document.querySelector('.autoplaylist-playlist'), 5, true);
+//multiplyNode(document.querySelector('.autoplaylist-playlist'), 5, true);
 
 </script>
 

@@ -1,28 +1,50 @@
 <?php
-// We need to use sessions, so you should always start sessions using the below code.
+
+// Start/resume the session
 session_start();
-// If the user is not logged in redirect to the login page...
+
+// If the user is not logged in, redirect them to the login page
 if (!isset($_SESSION['loggedin'])) {
 	header('Location: index.html');
 	exit;
 }
 
+// Create the database connection
 $DATABASE_HOST = 'mydb.itap.purdue.edu';
 $DATABASE_USER = 'g1120478';
 $DATABASE_PASS = 'Bean123.';
 $DATABASE_NAME = 'g1120478';
+// Try to connect to the database
 $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
 if (mysqli_connect_errno()) {
+	// If failed to connect to database, show error message
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
-// We don't have the password or email info stored in sessions so instead we can get the results from the database.
-$stmt = $con->prepare('SELECT password, email FROM Accounts WHERE id = ?');
-// In this case we can use the account ID to get the account info.
-$stmt->bind_param('i', $_SESSION['id']);
-$stmt->execute();
-$stmt->bind_result($password, $email);
-$stmt->fetch();
-$stmt->close();
+
+// Prepare SQL statement to retrieve information to display
+if ($stmt = $con->prepare('SELECT password, email FROM Accounts WHERE id = ?')) {
+	$stmt->bind_param('i', $_SESSION['id']);
+	$stmt->execute();
+	$stmt->bind_result($password, $email);
+	$stmt->fetch();
+	$stmt->close();
+}
+
+
+// managing user data (changing password)
+$current_password= $_POST['currentPassword'];
+$new_password = $_POST['newPassword'];
+$confirm_password = $_POST['confirmPassword'];
+
+
+  // if ($new_password==$confirm_password){
+	// 	 $stmt1 = $con->prepare('UPDATE Accounts SET password= "'.$new_password.'" WHERE id = ?');
+	// 	 $stmt1->bind_param('i', $_SESSION['id']);
+	// 	 $stmt1->execute();
+	// 	 $stmt1->bind_result($password);
+	// 	 $stmt1->fetch();
+	// 	 $stmt1->close();
+	//  }
 
 ?>
 
@@ -74,7 +96,7 @@ $stmt->close();
 </div>
 
 <!-- form to manage account !-->
-      <form action="" method="post" class="form-container-profile">
+      <form action="changePassword.php" method="post" class="form-container-profile">
 
           <label for="oldpswd" style="color: white"><b>Current Password</b></label><br />
           <input type="password" placeholder="Enter Current Password" name="currentPassword" style="width: 100%; height: 30px;"><br />
@@ -104,7 +126,10 @@ $stmt->close();
 </div>
 	<div class="buttons">
 		<button type="button" class="cancelbtn" onclick="closeFormDelete()">Cancel</button>
-		<button type="button" class="deletebtn">Delete Account Data</button>
+		<a href="https://web.ics.purdue.edu/~g1120478/deleteAccount.php">
+		  <button type="button" class="deletebtn">Delete Account Data</button>
+		</a>
+
  </div>
 </form>
 

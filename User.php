@@ -1,7 +1,9 @@
 <?php
-// We need to use sessions, so you should always start sessions using the below code.
+
+// Start/resume session
 session_start();
-// If the user is not logged in redirect to the login page...
+
+// Check to see if the user is logged in, if not, redirect them to the login page
 if (!isset($_SESSION['loggedin'])) {
 	header('Location: index.html');
 	exit;

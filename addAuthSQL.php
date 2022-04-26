@@ -1,23 +1,28 @@
 <?php
-// We need to use sessions, so you should always start sessions using the below code.
+
+// Start the session
 session_start();
+
+// If the user has not authenticated their account, redirect to login page
 if (empty($_SESSION['access'])) {
   header('Location: index.html');
   exit;
 }
 
+//Connect to database
 $DATABASE_HOST = 'mydb.itap.purdue.edu';
 $DATABASE_USER = 'g1120478';
 $DATABASE_PASS = 'Bean123.';
 $DATABASE_NAME = 'g1120478';
+
+// Exit if database connection has failed
 $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
 if (mysqli_connect_errno()) {
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
-// We don't have the password or email info stored in sessions so instead we can get the results from the database.
 
+// Prepare end execute insertion statement
 if ($stmt = $con->prepare('INSERT INTO Tokens (user_id, access, refresh) VALUES (?, ?, ?)')) {
-	// $stmt->bind_param('iss', $_SESSION['id'], $_SESSION['access_token'], $_SESSION['refresh_token']);
 	$id = $_SESSION['id'];
 	$access = $_SESSION['access'];
 	$refresh = $_SESSION['refresh'];
@@ -26,6 +31,7 @@ if ($stmt = $con->prepare('INSERT INTO Tokens (user_id, access, refresh) VALUES 
 	$stmt->close();
 }
 
+// Prepare and execute update statement
 if ($stmt = $con->prepare('UPDATE Accounts SET auth = ? WHERE id = ?')) {
 	$authorization = 1;
 	$id = $_SESSION['id'];
@@ -34,8 +40,13 @@ if ($stmt = $con->prepare('UPDATE Accounts SET auth = ? WHERE id = ?')) {
 	$stmt->execute();
 	$stmt->close();
 }
+
+// Close the connection to the database
 $con->close();
 
+// Set the user to logged in status
 $_SESSION['loggedin'] = TRUE;
+
+//redirect the user to the home page
 header('Location: Home.php')
 ?>

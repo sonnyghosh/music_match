@@ -544,10 +544,12 @@ body.loggedin {
   position: relative;
   margin-right: 10px;
   float: left;
+  background-image: url("https://mosaic.scdn.co/300/ab67616d0000b2731de27f12958ceb8b1f65461aab67616d0000b273676a8230a422123e8012557eab67616d0000b273ef063cb80508c55eb443a671ab67616d0000b273f4822f8034e697410a14a297");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .fakecover-song {
-  background-color: Crimson;
   width: 5px;
   height: 5px;
   padding: 20px;
@@ -555,6 +557,9 @@ body.loggedin {
   margin-right: 10px;
   float: left;
   display: flex;
+  background-image: url("https://mosaic.scdn.co/300/ab67616d0000b2731de27f12958ceb8b1f65461aab67616d0000b273676a8230a422123e8012557eab67616d0000b273ef063cb80508c55eb443a671ab67616d0000b273f4822f8034e697410a14a297");
+  background-repeat: no-repeat;
+  background-size: cover;
 
 }
 
